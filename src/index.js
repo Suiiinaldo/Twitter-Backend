@@ -1,8 +1,7 @@
 import express from "express";
 import { PORT } from "./config/server-config.js";
 import { connection as Connect } from "./config/database-config.js";
-import Tweet from "./models/tweet.js"
-import HashTag from "./models/hashtags.js";
+import TweetRepository from "./repository/tweet-repository.js";
 
 const app = express();
 
@@ -17,8 +16,11 @@ app.listen(PORT, async() => {
     //     likes: 25,
     //     noOfRetweets: 4,
     // })
-    HashTag.create({
-        text: "#travel",
-        tweets: ['65bf6e07540cae04141ce447'],
-    });
+    // const tweetRepo = new TweetRepository();
+    // const tweets = await tweetRepo.getAllTweets();
+    // console.log(tweets);
+    // const tweet = await tweetRepo.getTweet('65bf6e1dba4fadd98e12bf0e');
+    // const response = await tweetRepo.getAll({});
+    // console.log(response);
+    
 })
