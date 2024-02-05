@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import { ObjectId } from "bson";
 
 const tweeetSchema = new mongoose.Schema({
     content: {
         type: String,
+        required: true,
     },
     likes: {
         type: Number,
@@ -12,7 +12,7 @@ const tweeetSchema = new mongoose.Schema({
         type: Number,
     },
     commment: {
-        type: ObjectId,
+        type: String,
     },
 });
 
