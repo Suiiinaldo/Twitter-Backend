@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
-import { ObjectId } from "bson";
 
 const hashtagSchema = new mongoose.Schema({
     text: {
         type: String,
+        unique: true,
+        required: true,
     },
     tweets: [
         {

@@ -5,4 +5,4 @@ async function connection() {
 }
 
 
-export { connection };
+export default connection;

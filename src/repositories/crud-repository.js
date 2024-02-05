@@ -16,7 +16,7 @@ class CrudRepository{
 
     async bulkInsert(data){
         try {
-            const response = await this.model.bulkInsert(data);
+            const response = await this.model.insertMany(data);
             return response;
         } catch (error) {
             console.log(error);
