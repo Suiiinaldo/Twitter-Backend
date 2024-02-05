@@ -27,12 +27,10 @@ class TweetController{
                     })
         }
     }
-    
-    async getTweet(req,res){
+
+    async getTweets(req,res){
         try {
-            const id = req.params.id;
-            const response = await tweetService.getTweet(id);
-    
+            const response = await tweetService.getTweets();
             return res.status(StatusCodes.OK)
                     .json({
                         success: true,
@@ -52,9 +50,10 @@ class TweetController{
         }
     }
 
-    async getTweets(req,res){
+    async getTweet(req,res){
+        console.log("Inside getTweet controller");
         try {
-            const response = await tweetService.getTweets();
+            const response = await tweetService.getTweet(req.params.id);
             return res.status(StatusCodes.OK)
                     .json({
                         success: true,

@@ -33,9 +33,10 @@ class TweetService{
         }
     }
     
-    async getTweet(tweetId){
+    async getTweet(id){
+        console.log("Inside service");
         try {
-            const tweet = tweetrepo.get(tweetId);
+            const tweet = await tweetrepo.get(id);
             return tweet;
         } catch (error) {
             console.log(error);
@@ -45,7 +46,7 @@ class TweetService{
 
     async getTweets(){
         try {
-            const tweets = tweetrepo.getAll({});
+            const tweets = await tweetrepo.getAll({});
             return tweets;
         } catch (error) {
             console.log(error);

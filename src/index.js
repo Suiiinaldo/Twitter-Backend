@@ -1,4 +1,4 @@
-import express, { urlencoded } from "express";
+import express from "express";
 import { connection as Connect, PORT} from "./config/index.js";
 import { apiRoutes } from "./routes/index.js";
 const app = express();
