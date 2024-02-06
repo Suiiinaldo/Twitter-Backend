@@ -34,7 +34,6 @@ class TweetService{
     }
     
     async getTweet(id){
-        console.log("Inside service");
         try {
             const tweet = await tweetrepo.get(id);
             return tweet;

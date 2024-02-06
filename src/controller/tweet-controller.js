@@ -51,7 +51,6 @@ class TweetController{
     }
 
     async getTweet(req,res){
-        console.log("Inside getTweet controller");
         try {
             const response = await tweetService.getTweet(req.params.id);
             return res.status(StatusCodes.OK)
