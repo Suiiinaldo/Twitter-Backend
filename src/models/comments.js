@@ -5,9 +5,6 @@ const commentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    commment: {
-        type: String,
-    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
     },
@@ -21,6 +18,12 @@ const commentSchema = new mongoose.Schema({
         required: true,
         refPath: 'onModel', 
     },
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment',
+        }
+    ]
 });
 
 const Comment = mongoose.model('Comment',commentSchema);
