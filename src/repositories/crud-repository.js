@@ -44,9 +44,9 @@ class CrudRepository{
         }
     }
 
-    async delete(data){
+    async delete(id){
         try {
-            const response = await this.model.deleteOne(data);
+            const response = await this.model.findByIdAndDelete(id);
             return response;
         } catch (error) {
             console.log("Something went wrong while deleting in crud repo");
@@ -56,7 +56,7 @@ class CrudRepository{
 
     async update(id,data){
         try {
-            const response = await this.model.updateOne(id,data);
+            const response = await this.model.findByIdAndUpdate(id,data);
             return response;
         } catch (error) {
             console.log("Something went wrong while updating in crud repo");
