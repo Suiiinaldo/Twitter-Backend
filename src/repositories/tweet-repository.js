@@ -7,16 +7,6 @@ class TweetRepository extends CrudRepository{
         super(Tweet);
     }
 
-    async getTweet(id){
-        try {
-            const response = await Tweet.findById(id);
-            return response;
-        } catch (error) {
-            console.log(error);
-            throw error;
-        }
-    }
-
     async deleteTweet(data){
         try {
             const response = await Tweet.deleteOne(data);

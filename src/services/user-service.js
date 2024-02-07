@@ -1,3 +1,4 @@
+import User from "../models/users.js";
 import { UserRepository } from "../repositories/index.js";
 
 const userRepo = new UserRepository();
@@ -29,7 +30,8 @@ class UserService{
                     message: "Invalid Password",
                 };
             }
-            return user;
+            const token = user.genJWT();
+            return token;
         } catch (error) {
             console.log(error);
             throw error; 
