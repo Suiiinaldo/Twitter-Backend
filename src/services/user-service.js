@@ -43,11 +43,7 @@ class UserService{
             let followed = false;
             const user = await userRepo.get(userFrom);
             const influen = await userRepo.get(userTo);
-            const exists = await User.findOne({
-                    _id: userFrom,
-                    followings : userTo,
-                });
-            console.log(exists);
+            const exists = await userRepo.getByNameAndFollower(userFrom,userTo);
             if(!exists){
                 user.followings.push(userTo);
                 await user.save();

@@ -17,6 +17,19 @@ class UserRepository extends CrudRepository{
             throw error;
         }
     }
+    
+    async getByNameAndFollower(userFrom, userTo){
+        try {
+            const user = await this.model.findOne({
+                _id: userFrom,
+                followings : userTo,
+            })
+            return user;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
 }
 
 export default UserRepository;
