@@ -37,6 +37,38 @@ class UserService{
             throw error; 
         }
     }
+
+    async toggleFollowing(userTo, userFrom){
+        try {
+            let followed = false;
+            const user = await userRepo.get(userFrom);
+            const influen = await userRepo.get(userTo);
+            const exists = await User.findOne({
+                    _id: userFrom,
+                    followings : userTo,
+                });
+            console.log(exists);
+            if(!exists){
+                user.followings.push(userTo);
+                await user.save();
+                influen.followers.push(userFrom);
+                await influen.save();
+                followed = true;
+            }
+            else{
+                user.followings.pull(userTo);
+                await user.save();
+                influen.followers.pull(userFrom);
+                await influen.save();
+            }
+            return {
+                followed : followed,
+            };
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
 }
 
 export default UserService;

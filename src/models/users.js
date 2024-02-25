@@ -26,6 +26,16 @@ const userSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
         }
     ],
+    followers: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+        }
+    ],
+    followings : [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+        }
+    ]
 });
 
 userSchema.pre('save', function (next) {

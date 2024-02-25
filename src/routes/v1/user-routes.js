@@ -9,6 +9,8 @@ router.post("/signup", userController.signup);
 
 router.post("/signin", userController.signin);
 
+router.post("/toggleFollow", userController.toggleFollowing);
+
 
 // router.get("/:id",tweetController.getTweet);
 

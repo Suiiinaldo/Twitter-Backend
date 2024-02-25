@@ -1,5 +1,8 @@
 import { UserService } from "../services/index.js";
 import StatusCodes from "http-status-codes";
+import jwt from "jsonwebtoken";
+import { SECRET_KEY } from "../config/index.js";
+
 
 const userService = new UserService();
 
@@ -47,6 +50,25 @@ class UserController{
                         data: {},
                         error: error,
                     })
+        }
+    }
+
+    async toggleFollowing(req,res){
+        try {
+            const userTo = req.body.userTo; // Modi
+            const token = req.headers['authorization'].split(' ')[1];
+            const userFrom = jwt.verify(token, SECRET_KEY);
+            const response = await userService.toggleFollowing(userTo, userFrom.id);
+            return res.status(StatusCodes.OK)
+                        .json({
+                            success : true,
+                            data : response,
+                            error : [],
+                        });
+        } catch (error) {
+            console.log(error);
+            throw error;
+
         }
     }
 }
